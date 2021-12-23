@@ -1,74 +1,43 @@
-# 스택 수열
-# n = 8
-# 4 3 6 8 7 5 2 1
+# 1874번 스택 수열
 
-# 1 2  5 6 7 8
-# ++++--++-++--
-# [1 2 5 ]
-
-# 1 2 3 4 5 6 7 8
-# 4
-
-# 4 3 6
 n = int(input())
-findnums = []
-numbox = []
-numboxs = []
+n1, n2, answers = [],[],[]
+Flag ,texts = True,[]
+
 for i in range(n):
     num = int(input())
-    findnums.append(num)
-    numbox.append(i+1)
-    
-findnum = findnums.pop(0)
-Flag = True
-commands = []
-while findnums:
-    while numbox:
-        n = numbox.pop(0)
-        if n < findnum:
-            numboxs.append(n)
+    answers.append(num)
+    n1.append(i+1)
+
+while answers:
+    answer = answers.pop(0)
+    while n1:
+        x = n1.pop(0)
+        if x <= answer:
             # print("push")
-            commands.append("+")
-        elif n == findnum:
-            numboxs.append(n)
-            # print("push")
-            commands.append("+")
-            break
+            texts.append("+")
+            if x == answer:
+                # print("pop")
+                texts.append("-")
+                break
+            else:
+                n2.append(x)
         else:
+            n1.insert(0,x)
+            break
+    if n2:
+        x2 = n2.pop()
+        if x2 == answer:
+            texts.append("-")
+        elif x2 > answer:
             Flag = False
             break
-    if Flag:
-        while numboxs:
-            if numboxs[-1] == findnum:
-                numboxs.pop()
-                # print("pop")
-                commands.append("-")
-                if len(findnums) ==0:
-                    break
-                else:
-                    findnum = findnums.pop(0)
-            elif numboxs[-1] > findnum:
-                Flag = False
-                break
-            elif numboxs[-1] != findnum:
-                break
-            elif len(numboxs) ==0:
-                break
-    if not(Flag):
-        break
+        else:
+            n2.append(x2)
 if not(Flag):
-    print("No")
+    print("NO")
 else:
-    for k in commands:
-        print(k)
+    for t in texts:
+        print(t)
+        
 
-
-# 5
-# n1 = 1 2 3 4 5
-# answer = 1 2 5 3 4
-# push pop push pop push push pop 
-
-# n2 = 
-# 3 4 
-
-# 
