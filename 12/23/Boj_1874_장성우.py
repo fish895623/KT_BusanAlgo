@@ -6,41 +6,62 @@ https://www.acmicpc.net/problem/1874
 """
 from collections import deque
 import sys
-
 input = sys.stdin.readline
+
 n = int(input())
-
-data = deque()
-
-for _ in range(n):
-    data.append(int(input()))
 
 stack = []
 result = []
-d = data.popleft()
+stack_num = 1
+check = True
+for i in range(n):
+    num = int(input())
 
-for i in range(1, n+1):
-
+    while stack_num <= num:
+        stack.append(stack_num)
+        result.append("+")
+        stack_num += 1
     
-    stack.append(i)
-    result.append("+")
-
-    while stack[-1] == d:
-
-        result.append("-")
+    if stack[-1] == num:
         stack.pop()
-        if len(stack) == 0:
-            break
-        d = data.popleft()
+        result.append("-")
+    
+    else:
+        print("NO")
+        check = False
+        break
+        
 
-if len(stack) != 0:
-    print("NO")
-else:
+if check:
     for j in range(len(result)):
         print(result[j])
 
+# data = deque()
 
+# for _ in range(n):
+#     data.append(int(input()))
 
+# stack = []
+# result = []
+# if len(data) != 0:
+#     d = data.popleft()
 
+# for i in range(1, n+1):
 
+    
+#     stack.append(i)
+#     result.append("+")
 
+#     while stack[-1] == d:
+
+#         result.append("-")
+#         stack.pop()
+#         if len(stack) == 0:
+#             break
+#         d = data.popleft()
+
+# if len(stack) != 0:
+#     print("NO")
+# else:
+#     for j in range(len(result)):
+#         print(result[j])
