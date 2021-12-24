@@ -18,9 +18,9 @@ int main(int argc, char const *argv[])
     string ans;
     int n;
     int cnt = 1;
-    
+
     cin >> n;
-    
+
     while (n--)
     {
         int x;
