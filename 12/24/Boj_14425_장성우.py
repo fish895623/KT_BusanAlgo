@@ -7,12 +7,16 @@ https://www.acmicpc.net/problem/14425
 """
 import sys
 
+
+
 n, m = map(int, input().split())
 
 
 data = []
 for _ in range(n):
     data.append(sys.stdin.readline().rstrip())
+
+
 
 count = 0
 
