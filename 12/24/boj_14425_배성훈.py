@@ -1,4 +1,7 @@
+import time
 from sys import stdin
+
+start = time.time()
 input = stdin.readline
 
 queue_S = []
@@ -7,7 +10,6 @@ data = input()
 data = data.split(" ")
 N = int(data[0])
 M = int(data[1])
-
 
 for i in range(N):
     queue_S.append(input())
@@ -24,4 +26,6 @@ for val in queue_S:
         else:
             pass
 
-print(count)
+print(count, end="")
+
+print("\n\n\n", time.time() - start)

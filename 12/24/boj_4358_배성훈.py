@@ -1,6 +1,8 @@
 import sys
+import time
 from collections import defaultdict
 
+start = time.time()
 
 trees = defaultdict(int)
 
@@ -16,6 +18,7 @@ for line in sys.stdin:
 tree_list = list(trees.keys())
 tree_list.sort()
 
-
 for tree in tree_list:
     print("%s %.4f" % (tree, trees[tree] / count * 100))
+
+print(time.time() - start)
