@@ -32,8 +32,6 @@ visited[1]=True
 
 while queue:
     q = queue.popleft()
-
-    
     for i in data[q]:
         if not visited[i]:
             parent[i] = q
