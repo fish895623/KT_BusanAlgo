@@ -25,6 +25,5 @@ int main() {
 		else 
 			dp[i] = max(dp[i + 1], dp[i + v[i].first] + v[i].second);
 	}
-
 	cout << dp[0];
 }
