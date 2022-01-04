@@ -29,7 +29,7 @@ int main() {
 	}
 
 	                       
-	int ans = INF;
+	int ans =  INF;
 	for (int i = c; i < c + 101; i++) {
 		ans = min(ans, dp[i]);
 	}
