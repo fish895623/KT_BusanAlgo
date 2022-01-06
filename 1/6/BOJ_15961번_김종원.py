@@ -15,12 +15,6 @@
 from collections import deque
 import sys
 
-class Node:
-    def __init__(self,current,left,right):
-        self.curNode = current
-        self.leftNode = left
-        self.RightNode = right
-    
 N,d,k,cuppon = map(int,sys.stdin.readline().rstrip().split())
 Nodes = []
 dp = 0
@@ -29,27 +23,29 @@ for i in range(N):
     n = int(sys.stdin.readline().rstrip())
     Left1 = i-1 
     Right1 = (i+1)%N
-    nod = Node(n,Left1,Right1)
     Nodes.append((n,Left1,Right1))
 
 for i in range(N):
     q = deque([i])
+    dictDish = {Nodes[i][0] : 1}
     vistied = [0] * (N+1)
     vistied[i] = 1
     cnt = 1
-    eatlist = [Nodes[i].curNode]
+    eatlist = [Nodes[i][0]]
     while q:
         if cnt ==k:
             break
         nextIndex = q.popleft()
         CurNod = Nodes[nextIndex]
-        if not(vistied[CurNod.RightNode]):
-            vistied[CurNod.RightNode] = True
-            q.append(CurNod.RightNode)
-            eatlist.append(Nodes[CurNod.RightNode].curNode)
+        if not(vistied[CurNod[2]]):
+            vistied[CurNod[2]] = True
+            q.append(CurNod[2])
+            if Nodes[CurNod[2]][0] not in dictDish:
+                dictDish[Nodes[CurNod[2]][0]] =1
             cnt +=1
-    eatlist.append(cuppon)
-    dp = max(dp,len(set(eatlist)))
+    if cuppon not in dictDish:
+        dictDish[cuppon] =1
+    dp = max(dp,len(dictDish.keys()))
 print(dp)
 
 
