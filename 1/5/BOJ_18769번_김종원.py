@@ -30,8 +30,7 @@ for _ in range(T):
         "vertices" : [(i+1) for i in range(R*C)],
         "edges" : []
     }
-    parent = dict()
-    rank = dict()
+    
 
     # 그래프 노드 정보 (1,1), (1,2) ,(1,3) , (2,1) 정보를 1, 2, 3, 4, 5, 6 노드 번호로 새로 마킹하면서 간선 cost 비용도 추가하는 과정
     # 시간 복잡도 (R*C)
@@ -64,7 +63,10 @@ for _ in range(T):
                     # graph[number].append((new_number, cost))
                     graphs["edges"].append((cost,number,new_number))
 
-
+    # root 집합 정보를 나타냄 
+    # 초기에는 자기 자신이 root를 가리킴.
+    parent = dict()
+    rank = dict()
 
     #vertice 초기화
     def make_set(vertice):
@@ -81,13 +83,12 @@ for _ in range(T):
     def union(vertice1, vertice2):
         root1 = find(vertice1)
         root2 = find(vertice2)
-        if root1 != root2:
-            if rank[root1] > rank[root2]:
-                parent[root2] = root1
-            else:
-                parent[root1] = root2
-                if rank[root1] == rank[root2]: 
-                    rank[root2] += 1
+        if rank[root1] > rank[root2]:
+            parent[root2] = root1
+        else:
+            parent[root1] = root2
+            if rank[root1] == rank[root2]: 
+                rank[root2] += 1
 
     def kruskal(graph):
         minimum_spanning_tree = []
@@ -95,18 +96,29 @@ for _ in range(T):
         #초기화
         for vertice in graph['vertices']:
             make_set(vertice)
-            
+        print(parent)
+        print(rank)
+        print("--------"*4)
+
         #간선 weight 기반 sorting
         edges = graph['edges']
         edges.sort()
-        # print("엣지 : ",edges)
-        #간선 연결 (사이클 없게)
+        
+        #최소 간선 순으로 연결 (사이클 없게)
         for edge in edges:
             weight, vertice1, vertice2 = edge
+            # print()
+            # print("vertice1 : ",vertice1, " -> vertice2 : ",vertice2)
+            # print("Par : ",parent)
+            # print("Rank : ",rank)
+            # print()
             if find(vertice1) != find(vertice2):
+                print("vertice1 : ",vertice1, " -> vertice2 : ",vertice2)
                 union(vertice1, vertice2)
+                # print("Par : ",parent)
                 minimum_spanning_tree.append(edge)
                 minimum_cost += edge[0]
         return minimum_spanning_tree ,minimum_cost
     result = kruskal(graphs)
     print(result[1])
+    break

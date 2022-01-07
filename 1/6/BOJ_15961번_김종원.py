@@ -12,7 +12,6 @@
 # Nodes = []
 # dish = [7,9,7,30,2,7,9,25]
 
-from collections import deque
 import sys
 
 N,d,k,cuppon = map(int,sys.stdin.readline().rstrip().split())
@@ -21,31 +20,16 @@ dp = 0
 
 for i in range(N):
     n = int(sys.stdin.readline().rstrip())
-    Left1 = i-1 
-    Right1 = (i+1)%N
-    Nodes.append((n,Left1,Right1))
+    Nodes.append(n)
 
-for i in range(N):
-    q = deque([i])
-    dictDish = {Nodes[i][0] : 1}
-    vistied = [0] * (N+1)
-    vistied[i] = 1
-    cnt = 1
-    eatlist = [Nodes[i][0]]
-    while q:
-        if cnt ==k:
-            break
-        nextIndex = q.popleft()
-        CurNod = Nodes[nextIndex]
-        if not(vistied[CurNod[2]]):
-            vistied[CurNod[2]] = True
-            q.append(CurNod[2])
-            if Nodes[CurNod[2]][0] not in dictDish:
-                dictDish[Nodes[CurNod[2]][0]] =1
-            cnt +=1
-    if cuppon not in dictDish:
-        dictDish[cuppon] =1
-    dp = max(dp,len(dictDish.keys()))
+cnt =0
+for i in range(0,N,1):
+    dictDish = {cuppon:1}
+    for j in range(i+1,i+k+1,1):    
+        Right1 = (j)%N
+        if Nodes[Right1] not in dictDish:
+            dictDish[Nodes[Right1]] =1
+    dp = max(dp,len(dictDish))
 print(dp)
 
 
