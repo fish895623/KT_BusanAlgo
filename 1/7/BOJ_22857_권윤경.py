@@ -5,7 +5,7 @@ input = sys.stdin.readline
 N, K = map(int, input().split())
 array = list(map(int, input().split()))
 
-# 홀짝 구분해서 홀수 앞에 짝수가 얼마나 있는지 세는 함수 (예외: 모두 짝수일 때는 무조건 하나는 빼야함)
+# 홀짝 구분해서 홀수 앞에 짝수가 얼마나 있는지 세는 함수
 def OddEven(array):
     dic = dict()
     cnt = 0
