@@ -1,6 +1,7 @@
 N, K = map(int, input().split())
 lst = list(map(int, input().split()))
 
+# 짝수 앞에 있는 홀수 개수 세서 리스트로 만든다.
 odd = 0
 odd_lst = []
 for i in range(N):
@@ -30,10 +31,8 @@ else :
         cnt = 1
         sum = 0
         if odd_lst[n] > odd_lst[n + 1]:
-            while(sum <= K and n < length):
+            while(sum <= K and n < length - 1):
                 n = n + 1
-                if (n == length):
-                    break
                 sum += odd_lst[n]
                 if(sum > K):
                     break
