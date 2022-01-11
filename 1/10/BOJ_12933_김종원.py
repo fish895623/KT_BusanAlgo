@@ -1,8 +1,8 @@
 S = "quqacukqauackck"
-S = "quackquackquackquackquackquackquackquackquackquack"
-S = "qqqqqqqqqquuuuuuuuuuaaaaaaaaaacccccccccckkkkkkkkkk"
-# S = "quackqauckquack"
-# S = "quqaquuacakcqckkuaquckqauckack"
+# S = "quackquackquackquackquackquackquackquackquackquack"
+# S = "qqqqqqqqqquuuuuuuuuuaaaaaaaaaacccccccccckkkkkkkkkk"
+S = "quackqauckquack"
+S = "quqaquuacakcqckkuaquckqauckack"
 # S = "kcauq"
 
 ## 오리문제는 quack 순으로 문자열을 탐색을 진행하는데,
@@ -15,26 +15,34 @@ S = "qqqqqqqqqquuuuuuuuuuaaaaaaaaaacccccccccckkkkkkkkkk"
 
 import sys
 
-S = sys.stdin.readline().rstrip()
-vistied = [0] * len(S)
+S = list(sys.stdin.readline().rstrip())
+
 count = 0
 flag = True
-
-while sum(vistied) != len(S):
-    text = list("quack")
-    findStr = text.pop(0)
-    searchingCount =0
-    for idx, txt in enumerate(S):
-        if (findStr == txt and not(vistied[idx])):
-            vistied[idx] = 1
-            text.append(findStr)
-            findStr = text.pop(0)
-            searchingCount +=1
-    if searchingCount % 5 !=0:
-        flag = False
-        break
-    count +=1
-if flag:
-    print(count)
-else:
+text = ['q','u','a','c','k']
+if len(S) % 5 != 0 or len(S) == 0:
     print(-1)
+else:
+    while len(S) != 0:
+        midx,j,searchingCount = 0,0,0
+        findStr = text[j]
+        if S[midx] != 'q':
+            flag = False
+            break
+        else:
+            while midx !=len(S):
+                if (findStr == S[midx]):
+                    S.pop(midx)
+                    midx -=1
+                    j  = (j+1) % 5
+                    findStr = text[j]
+                    searchingCount +=1
+                midx +=1
+            if searchingCount % 5 !=0 or len(S) %5 !=0 or findStr != 'q' or midx %5 !=0:
+                flag = False
+                break
+            count +=1
+    if flag:
+        print(count)
+    else:
+        print(-1)
