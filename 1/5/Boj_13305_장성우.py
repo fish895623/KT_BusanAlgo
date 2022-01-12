@@ -13,12 +13,15 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-road = list(map(int, input().split()))
-oil = list(map(int, input().split()))
+road = list(map(int, input().split())) 
+oil = list(map(int, input().split())) 
 
 min_oil_val = 10000000000000
+
 result = 0
 min_index = 0
+
+
 
 for num, oil_price in enumerate(oil):
 
