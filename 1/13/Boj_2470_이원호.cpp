@@ -10,31 +10,31 @@ int main(int argc, char const *argv[])
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
     vector<long long> arr(n);
-    int max_len = 0;
-    
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
+    for(int i = 0; i < n; i++) cin >> arr[i]; 
 
-    long long left = 1, right = *max_element(arr.begin(), arr.end());
+    sort(arr.begin(), arr.end());
 
-    while (left <= right)
+    int left = 0, right = n - 1;
+    long long ansLeft = 0, ansRight = 0;
+
+    long long minimum = 20'000'000'001;
+
+    while(left < right)
     {
-        long long mid = (left + right) / 2;
-        int cnt = 0;
-        
-        for (auto val : arr)
-            cnt += val / mid;
-        
-        if (cnt >= m) {
-            max_len = mid;
-            left = mid + 1;
+        long long sum = arr[left] + arr[right];
+
+        if(minimum > (sum < 0 ? -sum : sum)) {
+            minimum = (sum < 0 ? -sum : sum);
+            ansLeft = arr[left];
+            ansRight = arr[right];
         }
-        else
-            right = mid - 1;
+        if(sum < 0) left++;
+        if(sum == 0) break;
+        if(sum > 0) right--;
     }
-    cout << max_len;
+    cout << ansLeft << ' ' << ansRight;
     return 0;
 }
