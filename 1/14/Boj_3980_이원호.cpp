@@ -8,19 +8,21 @@
 
 using namespace std;
 
+#define PLAYER 11
+
 int max_ = 0;
-int player[11][11];
+int player[PLAYER][PLAYER];
 
 void bt(vector<int> picked, bool isValid[], int toPick)
 {   
-    if(toPick >= 11)
+    if(toPick >= PLAYER)
     {
-        if(count(isValid, isValid + 11, false) > 0) return;
+        if(count(isValid, isValid + PLAYER, false) > 0) return;
         int sum = accumulate(picked.begin(), picked.end(), 0);
         if(max_ < sum) max_ = sum;
         return ;
     }
-    for(int i = 0; i < 11; i++) {
+    for(int i = 0; i < PLAYER; i++) {
         if(player[toPick][i] == 0) continue;
         if(isValid[i]) continue;
 
@@ -42,11 +44,11 @@ int main(int argc, char const *argv[])
     int test;
     cin >> test;
     for(int i = 0; i < test; i++) {
-        for(int i = 0; i < 11; i++)
-            for(int j = 0; j < 11; j++)
+        for(int i = 0; i < PLAYER; i++)
+            for(int j = 0; j < PLAYER; j++)
                 cin >> player[i][j];
         
-        bool isValid[11] = {false};
+        bool isValid[PLAYER] = {false};
         vector<int> picked;
 
         bt(picked, isValid, 0);
