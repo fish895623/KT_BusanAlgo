@@ -1,5 +1,5 @@
 a = int(input())
-
+#
 b = 1
 
 while b * (b + 1) / 2 <= a:
