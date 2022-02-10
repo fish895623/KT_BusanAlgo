@@ -6,4 +6,4 @@
 |  2월 7일  |   자료구조    |         [풍선 터뜨리기](https://www.acmicpc.net/problem/2346)         |     [괄호 제거](https://www.acmicpc.net/problem/2800)     |  -  |  -  |
 |  2월 8일  |    문자열     |            [회문](https://www.acmicpc.net/problem/17609)              |   [파일 탐색기](https://www.acmicpc.net/problem/20210)    |  -  |  -  |
 |  2월 9일  |   완전탐색    |           [블랙잭](https://www.acmicpc.net/problem/2798)              |         [꽃길](https://www.acmicpc.net/problem/14620)     |  -  |  -  |
-
+|  2월 10일 |   시뮬레이션  |          [ZOAC 3](https://www.acmicpc.net/problem/20436)              |    [지구 온난화](https://www.acmicpc.net/problem/5212)    |  -  |  -  |
