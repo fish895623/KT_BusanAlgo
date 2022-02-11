@@ -13,7 +13,7 @@ https://www.acmicpc.net/problem/20436
 """
 
 
-
+# 문자의 x, y 위치를 반환해준다.
 def find_loc(word):
     keyboard = [
         ['q','w','e','r','t','y','u','i','o','p'],
@@ -26,18 +26,14 @@ def find_loc(word):
             y = i
             x = key.index(word)
             return x, y
-def mo(word):
-    mo = "qwertasdfgzxcv"
 
-    if word in mo:
-        return True
-    else:
-        return False
 
-    
 sl, sr = map(str, input().split())
 data = input()
 result = 0
+
+# 모음 저장
+consonant = "qwertasdfgzxcv"
 
 for d in data:
     
@@ -46,16 +42,18 @@ for d in data:
         result += 1
         
     
-    # 아닌 경우 제일 짧은거리로 이동을 해야한다.
+    # 아닌 경우 각각의 위치 별 x, y위치를 입력받자.
     else:
 
         slx, sly = find_loc(sl)
         srx, sry = find_loc(sr)
         dx, dy = find_loc(d)
 
-        if mo(d):
+        # 모음이라면 왼쪽이 이동한다.
+        if d in consonant:
             result += abs(slx-dx) + abs(sly-dy) + 1
             sl, slx, sly = d, dx, dy
+        # 자음이라면 오른쪽이 이동한다.
         else:
             result += abs(srx-dx) + abs(sry-dy) + 1
             sr, srx, sry = d, dx, dy
