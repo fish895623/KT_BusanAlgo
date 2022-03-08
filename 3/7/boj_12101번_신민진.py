@@ -13,10 +13,10 @@ input = sys.stdin.readline
 
 def dfs(sum_num, answer):
     global cnt
-    # n보다 큰 경우 확인할 필요x -> 가지치기
+    # n보다 큰 경우 확인할 필요x
     if sum_num > n:
         return    
-    if n == sum_num:
+    if sum_num == n:
         # k번째 수를 찾기 위함
         cnt += 1
         if cnt == k:
