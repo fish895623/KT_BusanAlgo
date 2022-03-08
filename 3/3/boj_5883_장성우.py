@@ -17,8 +17,8 @@ result_cnt = 0
 for i in set(data):
     for j in data:
 
-        if j != i: # 제거될 데이터는 빼고 본다.
-            if last_data != j: # 데이터가 이전 데이터랑 다를 경우
+        if j != i:  # 제거될 데이터는 빼고 본다.
+            if last_data != j:  # 데이터가 이전 데이터랑 다를 경우
                 result_cnt = max(result_cnt, cnt)
                 last_data = j
                 cnt = 1
