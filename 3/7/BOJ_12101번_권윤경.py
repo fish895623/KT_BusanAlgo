@@ -13,10 +13,11 @@ def dfs(num, now_sum, arr):
         return   
         
     for i in range(1,4):
-        arr.append(f"{i} + ")
+        arr.append(f"{i}+")
         dfs(num, now_sum+i, arr)
         arr.pop()
 
 n, k = map(int,input().split())
 cnt = 0
 dfs(n,0,[])
+print(-1)
