@@ -36,7 +36,7 @@ for v in vertics:
         dp[cur_node] = 1
     else:
         for nex in edge[cur_node]:  # 탐색한 노드 정보를 모두 탐색하는데 저장된 노드 정보 보다 큰 정보로 저장.
-            dp[ ] = max(dp[cur_node], dp[nex]+1) 
+            dp[cur_node] = max(dp[cur_node], dp[nex]+1) 
                 
 for m in range(len(dp)):
     if m!= 0:
