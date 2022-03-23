@@ -6,3 +6,4 @@
 | 3월 8일  |               |         [싸이버개강총회](https://www.acmicpc.net/problem/19583)          |     |     |     |
 | 3월 10일 |  시뮬레이션   |       [동방 프로젝트 small](https://www.acmicpc.net/problem/14594)       |     |     |     |
 | 3월 11일 |   완전 탐색   | [한국이 그리울 땐 서버에 접속하지](https://www.acmicpc.net/problem/9996) |     |     |     |
+| 3월 14일 |               |           [아기 상어 2](https://www.acmicpc.net/problem/17086)           |     |     |     |
